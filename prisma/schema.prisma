@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Route {
+  id        Int         @id @default(autoincrement())
+  code      String      @unique
+  operator  String
+  number    String
+  color     String?
+  origin    String
+  destination String
+  roundTrip Boolean     @default(false)
+  waypoints String[]
+  stops     RouteStop[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model Stop {
+  id        Int         @id @default(autoincrement())
+  name      String
+  latitude  Float?
+  longitude Float?
+  routes    RouteStop[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model RouteStop {
+  id        Int    @id @default(autoincrement())
+  route     Route  @relation(fields: [routeId], references: [id], onDelete: Cascade)
+  routeId   Int
+  stop      Stop   @relation(fields: [stopId], references: [id], onDelete: Cascade)
+  stopId    Int
+  order     Int
+
+  @@unique([routeId, stopId])
+}
