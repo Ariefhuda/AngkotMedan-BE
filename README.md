@@ -1,5 +1,7 @@
 # AngkotMedan-BE
 
+> Repo ini sudah digabung ke [AngkotMedan](https://github.com/Ariefhuda/AngkotMedan), yang sekarang berisi halaman web dan API dalam satu server. Pengembangan dilanjutkan di sana; repo ini disimpan sebagai arsip.
+
 API pencari rute angkot Kota Medan. Menyimpan data trayek dan halte di PostgreSQL, lalu menjawab pertanyaan "dari titik ini ke titik itu naik angkot apa".
 
 Ini backend untuk [AngkotMedan-FE](https://github.com/Ariefhuda/AngkotMedan-FE). Versi situs yang berjalan tanpa backend ada di [AngkotMedan](https://github.com/Ariefhuda/AngkotMedan).
