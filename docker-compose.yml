@@ -1,0 +1,14 @@
+# Postgres untuk pengembangan lokal. Nilainya cocok dengan DATABASE_URL di .env.example.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: angkot_medan
+    ports:
+      - "5432:5432"
+    volumes:
+      - angkot_pgdata:/var/lib/postgresql/data
+
+volumes:
+  angkot_pgdata:
